@@ -6,6 +6,8 @@ const {
     GraphQLList
 } = require('graphql');
 
+const User = require('./../models/user');
+
 const CharityType = new GraphQLObjectType({
     name: 'Charity',
     fields: () => ({
@@ -15,10 +17,19 @@ const CharityType = new GraphQLObjectType({
         name: {
             type: GraphQLString
         },
+        description: {
+            type: GraphQLString
+        },
         owner: {
             type: UserType,
             resolve(parent, args) {
-                // TODO : resolve it 
+                return User.findById(parent.ownerId);
+            }
+        },
+        followers: {
+            type: new GraphQLList(UserType),
+            resolve(parent, args) {
+                // TODO: resolve it
             }
         }
     })
@@ -30,7 +41,10 @@ const UserType = new GraphQLObjectType({
         id: {
             type: GraphQLID
         },
-        name: {
+        first_name: {
+            type: GraphQLString
+        },
+        last_name: {
             type: GraphQLString
         },
         dob: {
@@ -39,7 +53,13 @@ const UserType = new GraphQLObjectType({
         owns: {
             type: new GraphQLList(CharityType),
             resolve(parent, args) {
-                // TODO : resolve it
+                // TODO: resolve it
+            }
+        },
+        follows: {
+            type: new GraphQLList(CharityType),
+            resolve(parent, args) {
+                // TODO: resolve it
             }
         }
     })

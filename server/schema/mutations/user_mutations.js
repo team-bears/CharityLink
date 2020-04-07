@@ -1,18 +1,39 @@
 const {
     GraphQLNonNull,
-    GraphQLID,
-    GraphQLBoolean
+    GraphQLString
 } = require("graphql");
 
+const User = require('./../../models/user');
+
+const {
+    UserType
+} = require('./../types');
+
+
 const UserMutations = {
-    mutateUser: {
-        type: GraphQLBoolean,
+    createUser: {
+        type: UserType,
         args: {
-            id: {
-                type: new GraphQLNonNull(GraphQLID)
+            first_name: {
+                type: new GraphQLNonNull(GraphQLString)
+            },
+            last_name: {
+                type: new GraphQLNonNull(GraphQLString)
+            },
+            dob: {
+                type: new GraphQLNonNull(GraphQLString)
             }
         },
-        resolve: async (_source, args, context) => {}
+        resolve: (parent, args) => {
+            let user = new User({
+                first_name: args.first_name,
+                last_name: args.last_name,
+                dob: args.dob,
+                followsIds: []
+            });
+            user.save();
+            return user;
+        }
     },
 };
 

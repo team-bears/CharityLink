@@ -12,6 +12,30 @@ const {
     UserType
 } = require('./types');
 
+const Charity = require('../models/charity');
+const User = require('../models/user');
+
+const users = [{
+        id: 1,
+        first_name: "Ravi",
+        last_name: "Ghaghada",
+        dob: "2000-01-28"
+    },
+    {
+        id: 2,
+        first_name: "Hogan",
+        last_name: "Logan",
+        dob: "2001-12-13"
+    },
+    {
+        id: 3,
+        first_name: "Charles",
+        last_name: "Xavier",
+        dob: "1992-03-31"
+    }
+]
+
+
 const RootQuery = new GraphQLObjectType({
     name: 'RootQueryType',
     fields: {
@@ -23,13 +47,13 @@ const RootQuery = new GraphQLObjectType({
                 }
             },
             resolve(parent, args) {
-                // TODO
+                return User.findById(args.id);
             }
         },
         users: {
             type: new GraphQLList(UserType),
             resolve(parent, args) {
-                // TODO
+                return User.find({});
             }
         },
         charity: {
@@ -40,13 +64,13 @@ const RootQuery = new GraphQLObjectType({
                 }
             },
             resolve(parent, args) {
-                // TODO
+                return Charity.findById(args.id);
             }
         },
         charities: {
             type: new GraphQLList(CharityType),
             resolve(parent, args) {
-                // TODO
+                return Charity.find({});
             }
         }
     }
