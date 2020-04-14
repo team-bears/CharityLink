@@ -2,46 +2,38 @@ require('dotenv').config();
 
 const express = require('express');
 const graphqlHTTP = require('express-graphql');
+const session = require('express-session');
+const passport = require('passport');
 const schema = require('./schema/schema');
-const app = express();
-const mongoose = require('mongoose');
+const buildContext = require('graphql-passport').buildContext;
 
-mongoose.connect("mongodb+srv://charitylink:CharityLink123@charitylink-bibqn.mongodb.net/test?retryWrites=true&w=majority", {
+require('./authorization/auth');
+
+const mongoose = require('mongoose');
+// Connect to mongo db
+mongoose.connect(process.env.DB_LINK, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 });
 
+// Log once the connection to the db is made
 mongoose.connection.once('open', () => {
     console.log('Connected to the database');
 });
 
-const _ = require('lodash');
+const app = express();
+//app.use(session(options)
+app.use(passport.initialize());
+//app.use(passport.session());
 
-const users = [{
-        id: 1,
-        first_name: "Ravi",
-        last_name: "Ghaghada",
-        dob: "2000-01-28"
-    },
-    {
-        id: 2,
-        first_name: "Hogan",
-        last_name: "Logan",
-        dob: "2001-12-13"
-    },
-    {
-        id: 3,
-        first_name: "Charles",
-        last_name: "Xavier",
-        dob: "1992-03-31"
-    }
-]
-
-app.use(express.static('public'));
-
-app.use('/graphql', graphqlHTTP({
+app.use('/graphql', graphqlHTTP((req, res, User) => ({
     schema,
     graphiql: true,
-}));
+    context: buildContext({
+        req,
+        res,
+        User
+    })
+})));
 
 module.exports = app;

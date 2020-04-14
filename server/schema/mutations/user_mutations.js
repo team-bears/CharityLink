@@ -1,3 +1,4 @@
+const CJSON = require('flatted');
 const {
     GraphQLNonNull,
     GraphQLString
@@ -22,19 +23,47 @@ const UserMutations = {
             },
             dob: {
                 type: new GraphQLNonNull(GraphQLString)
+            },
+            email: {
+                type: new GraphQLNonNull(GraphQLString)
+            },
+            password: {
+                type: new GraphQLNonNull(GraphQLString)
             }
         },
         resolve: (parent, args) => {
-            let user = new User({
-                first_name: args.first_name,
-                last_name: args.last_name,
-                dob: args.dob,
-                followsIds: []
-            });
+            args.followsIds = [];
+            let user = new User(args);
             user.save();
             return user;
         }
     },
+    loginUser: {
+        type: UserType,
+        args: {
+            email: {
+                type: new GraphQLNonNull(GraphQLString)
+            },
+            password: {
+                type: new GraphQLNonNull(GraphQLString)
+            }
+        },
+        resolve: async (parent, {
+            email,
+            password
+        }, context) => {
+            const {
+                user,
+                info
+            } = await context.authenticate("graphql-local", {
+                email,
+                password
+            });
+            console.log(JSON.stringify(user[0]));
+            return user[0];
+
+        }
+    }
 };
 
 module.exports = UserMutations;

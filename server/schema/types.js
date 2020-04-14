@@ -3,7 +3,8 @@ const {
     GraphQLString,
     GraphQLID,
     GraphQLInt,
-    GraphQLList
+    GraphQLList,
+    GraphQLNonNull
 } = require('graphql');
 
 const User = require('./../models/user');
@@ -36,7 +37,7 @@ const CharityType = new GraphQLObjectType({
 });
 
 const UserType = new GraphQLObjectType({
-    name: 'Author',
+    name: 'User',
     fields: () => ({
         id: {
             type: GraphQLID
@@ -49,6 +50,12 @@ const UserType = new GraphQLObjectType({
         },
         dob: {
             type: GraphQLInt
+        },
+        email: {
+            type: GraphQLString
+        },
+        password: {
+            type: GraphQLString
         },
         owns: {
             type: new GraphQLList(CharityType),

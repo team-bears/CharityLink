@@ -1,5 +1,6 @@
 const graphql = require('graphql');
 const _ = require('lodash');
+const CJSON = require('flatted');
 
 const {
     GraphQLObjectType,
@@ -14,27 +15,6 @@ const {
 
 const Charity = require('../models/charity');
 const User = require('../models/user');
-
-const users = [{
-        id: 1,
-        first_name: "Ravi",
-        last_name: "Ghaghada",
-        dob: "2000-01-28"
-    },
-    {
-        id: 2,
-        first_name: "Hogan",
-        last_name: "Logan",
-        dob: "2001-12-13"
-    },
-    {
-        id: 3,
-        first_name: "Charles",
-        last_name: "Xavier",
-        dob: "1992-03-31"
-    }
-]
-
 
 const RootQuery = new GraphQLObjectType({
     name: 'RootQueryType',
@@ -52,7 +32,7 @@ const RootQuery = new GraphQLObjectType({
         },
         users: {
             type: new GraphQLList(UserType),
-            resolve(parent, args) {
+            async resolve(parent, args, context) {
                 return User.find({});
             }
         },

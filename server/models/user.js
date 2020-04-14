@@ -5,6 +5,8 @@ const userSchema = new Schema({
     first_name: String,
     last_name: String,
     dob: String,
+    email: String,
+    password: String,
     followsIds: [String]
 });
 
