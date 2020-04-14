@@ -22,9 +22,19 @@ mongoose.connection.once('open', () => {
 });
 
 const app = express();
-//app.use(session(options)
+app.use(session({
+    secret: process.env.SESSION_SECRET,
+}));
+
+passport.serializeUser(function (user, done) {
+    done(null, user);
+});
+
+passport.deserializeUser(function (user, done) {
+    done(null, user);
+});
 app.use(passport.initialize());
-//app.use(passport.session());
+app.use(passport.session());
 
 app.use('/graphql', graphqlHTTP((req, res, User) => ({
     schema,

@@ -1,7 +1,8 @@
 const CJSON = require('flatted');
 const {
     GraphQLNonNull,
-    GraphQLString
+    GraphQLString,
+    GraphQLBoolean
 } = require("graphql");
 
 const User = require('./../../models/user');
@@ -38,7 +39,7 @@ const UserMutations = {
             return user;
         }
     },
-    loginUser: {
+    login: {
         type: UserType,
         args: {
             email: {
@@ -53,14 +54,21 @@ const UserMutations = {
             password
         }, context) => {
             const {
-                user,
-                info
+                user
             } = await context.authenticate("graphql-local", {
                 email,
                 password
             });
+            context.login(user);
             return user;
 
+        }
+    },
+    logout: {
+        type: GraphQLBoolean,
+        resolve: async (parent, args, context) => {
+            context.logout();
+            return true;
         }
     }
 };

@@ -19,6 +19,12 @@ const User = require('../models/user');
 const RootQuery = new GraphQLObjectType({
     name: 'RootQueryType',
     fields: {
+        me: {
+            type: UserType,
+            resolve(parent, args, context) {
+                return context.getUser();
+            }
+        },
         user: {
             type: UserType,
             args: {
