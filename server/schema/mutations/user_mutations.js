@@ -13,7 +13,7 @@ const {
 
 
 const UserMutations = {
-    createUser: {
+    signup: {
         type: UserType,
         args: {
             first_name: {
