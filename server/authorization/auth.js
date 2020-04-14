@@ -3,14 +3,15 @@ const GraphQLLocalStrategy = require('graphql-passport').GraphQLLocalStrategy;
 
 const User = require('../models/user');
 
-passport.use(
-    new GraphQLLocalStrategy(async (email, password, done) => {
-        // Adjust this callback to your needs
-        const matchingUser = await User.find({
-            email: email,
-            password: password
-        });
-        const error = matchingUser.length == 1 ? null : new Error("no matching user");
-        done(error, matchingUser);
-    })
-);
+passport.use(new GraphQLLocalStrategy(async (email, password, done) => {
+    // Adjust this callback to your needs
+    const matchingUsers = await User.find({
+        email: email,
+        password: password
+    });
+    if (matchingUsers.length == 1) {
+        done(null, matchingUsers[0]);
+    } else {
+        done(new Error("no matching user"), null);
+    }
+}));

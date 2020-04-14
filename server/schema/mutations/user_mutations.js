@@ -59,8 +59,7 @@ const UserMutations = {
                 email,
                 password
             });
-            console.log(JSON.stringify(user[0]));
-            return user[0];
+            return user;
 
         }
     }
