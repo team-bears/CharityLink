@@ -25,40 +25,29 @@ const RootQuery = new GraphQLObjectType({
                 return context.getUser();
             }
         },
-        user: {
-            type: UserType,
-            args: {
-                id: {
-                    type: GraphQLID
-                }
-            },
-            resolve(parent, args) {
-                return User.findById(args.id);
-            }
-        },
         users: {
             type: new GraphQLList(UserType),
             async resolve(parent, args, context) {
                 return User.find({});
             }
         },
-        charity: {
-            type: CharityType,
-            args: {
-                id: {
-                    type: GraphQLID
-                }
-            },
-            resolve(parent, args) {
-                return Charity.findById(args.id);
-            }
-        },
-        charities: {
-            type: new GraphQLList(CharityType),
-            resolve(parent, args) {
-                return Charity.find({});
-            }
-        }
+        // charity: {
+        //     type: CharityType,
+        //     args: {
+        //         id: {
+        //             type: GraphQLID
+        //         }
+        //     },
+        //     resolve(parent, args) {
+        //         return Charity.findById(args.id);
+        //     }
+        // },
+        // charities: {
+        //     type: new GraphQLList(CharityType),
+        //     resolve(parent, args) {
+        //         return Charity.find({});
+        //     }
+        // }
     }
 });
 

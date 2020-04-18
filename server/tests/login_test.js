@@ -22,8 +22,8 @@ describe('User login test', () => {
             .catch((err) => {
                 throw err
             })
-
     });
+
     it('should fail to login with non-existent email', () => {
         return chai.request(app)
             .post('/graphql')
