@@ -14,11 +14,10 @@ const mongoose = require('mongoose');
 mongoose.connect(process.env.DB_LINK, {
     useNewUrlParser: true,
     useUnifiedTopology: true
-});
-
-// Log once the connection to the db is made
-mongoose.connection.once('open', () => {
-    console.log('Connected to the database');
+}).then((succ) => {
+    console.log("Connected to database.")
+}).catch((err) => {
+    console.error(JSON.stringify(err));
 });
 
 const app = express();
