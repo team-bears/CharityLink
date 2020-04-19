@@ -6,7 +6,7 @@ const session = require('express-session');
 const passport = require('passport');
 const schema = require('./schema/schema');
 const buildContext = require('graphql-passport').buildContext;
-
+const cors = require('cors');
 require('./authorization/auth');
 
 const mongoose = require('mongoose');
@@ -21,6 +21,8 @@ mongoose.connect(process.env.DB_LINK, {
 });
 
 const app = express();
+app.use(cors());
+
 app.use(session({
     secret: process.env.SESSION_SECRET,
 }));
