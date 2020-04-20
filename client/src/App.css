@@ -36,3 +36,7 @@
     transform: rotate(360deg);
   }
 }
+
+#password_input {
+  -webkit-text-security: disc;
+}
