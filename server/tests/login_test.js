@@ -1,4 +1,6 @@
-require('dotenv').config();
+require('dotenv').config({
+    path: '.env.test'
+});
 
 const app = require('../app');
 const chai = require('chai');
@@ -7,17 +9,18 @@ const chaiHttp = require('chai-http');
 chai.use(chaiHttp);
 const expect = chai.expect;
 
+const credentials = require('./utils').credentials;
+
 describe('User login test', () => {
     it('should successfully login with test user account details', () => {
         return chai.request(app)
             .post('/graphql')
             .send({
-                query: 'mutation { login(email:"bond@gmail.com" password: "FlippityFloop"){ id first_name }}'
+                query: `mutation { login(email:"${credentials.user.email}" password: "${credentials.user.password}"){ first_name }}`
             })
             .then((res) => {
                 expect(res.body.errors).to.be.undefined;
-                expect(res.body.data.login.id).to.be.equal('5e950514bc93fe06b2f3f950');
-                expect(res.body.data.login.first_name).to.be.equal('James');
+                expect(res.body.data.login.first_name).to.be.equal(credentials.user.first_name);
             })
             .catch((err) => {
                 throw err
@@ -43,7 +46,7 @@ describe('User login test', () => {
         return chai.request(app)
             .post('/graphql')
             .send({
-                query: 'mutation { login(email:"invalidemail" password: "invalidpassword"){ id first_name }}'
+                query: `mutation { login(email:"${credentials.user.email}" password: "invalidpassword"){ id first_name }}`
             })
             .then((res) => {
                 expect(res.body.errors).not.to.be.undefined;
