@@ -6,7 +6,7 @@ const session = require('express-session');
 const passport = require('passport');
 const schema = require('./schema/schema');
 const buildContext = require('graphql-passport').buildContext;
-
+const cors = require('cors');
 require('./authorization/auth');
 
 const mongoose = require('mongoose');
@@ -14,14 +14,15 @@ const mongoose = require('mongoose');
 mongoose.connect(process.env.DB_LINK, {
     useNewUrlParser: true,
     useUnifiedTopology: true
-});
-
-// Log once the connection to the db is made
-mongoose.connection.once('open', () => {
-    console.log('Connected to the database');
+}).then((succ) => {
+    console.log("Connected to database.")
+}).catch((err) => {
+    console.error(JSON.stringify(err));
 });
 
 const app = express();
+app.use(cors());
+
 app.use(session({
     secret: process.env.SESSION_SECRET,
 }));
