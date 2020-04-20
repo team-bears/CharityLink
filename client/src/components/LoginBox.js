@@ -47,7 +47,7 @@ class LoginBox extends Component{
 		    <input id="password_input" type="text"  onChange={ (e) => this.setState({ password: e.target.value }) } />
                 </div>
                 { this.showError()}
-                <button>+</button>
+                <button>Login</button>
             </form>
         )
     }
