@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "mocha tests/*_test.js",
+    "test": "nyc mocha tests/*_test.js --exit",
     "start": "nodemon index.js"
   },
   "author": "",
@@ -27,6 +27,7 @@
     "mongodb": "^3.5.5",
     "mongoose": "^5.9.9",
     "nodemon": "^2.0.3",
+    "nyc": "^15.0.1",
     "passport": "^0.4.1"
   }
 }
