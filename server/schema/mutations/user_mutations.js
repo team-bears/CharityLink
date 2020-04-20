@@ -11,6 +11,10 @@ const {
     UserType
 } = require('./../types');
 
+const {
+    validateEmail,
+    validatePassword
+} = require('./../../authorization/utils');
 
 const UserMutations = {
     signup: {
@@ -30,9 +34,17 @@ const UserMutations = {
             },
             password: {
                 type: new GraphQLNonNull(GraphQLString)
+            },
+            confirm_password: {
+                type: new GraphQLNonNull(GraphQLString)
             }
         },
-        resolve: (parent, args) => {
+        resolve: async (parent, args) => {
+
+            await validateEmail(args.email);
+
+            validatePassword(args.password);
+
             args.followsIds = [];
             let user = new User(args);
             user.save();

@@ -24,7 +24,7 @@ const CharityType = new GraphQLObjectType({
         owner: {
             type: UserType,
             resolve(parent, args) {
-                return User.findById(parent.ownerId);
+                // return User.findById(parent.ownerId);
             }
         },
         followers: {
