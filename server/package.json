@@ -20,6 +20,7 @@
     "easygraphql-tester": "^5.1.6",
     "express-graphql": "^0.9.0",
     "express-session": "^1.17.0",
+    "fakerator": "^0.3.1",
     "flatted": "^2.0.2",
     "graphql-passport": "^0.6.3",
     "lodash": "^4.17.15",

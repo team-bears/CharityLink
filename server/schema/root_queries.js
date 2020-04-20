@@ -22,13 +22,8 @@ const RootQuery = new GraphQLObjectType({
         me: {
             type: UserType,
             resolve(parent, args, context) {
-                return context.getUser();
-            }
-        },
-        users: {
-            type: new GraphQLList(UserType),
-            async resolve(parent, args, context) {
-                return User.find({});
+                const user = context.getUser();
+                return user;
             }
         },
         // charity: {
