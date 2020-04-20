@@ -10,7 +10,7 @@ const expect = chai.expect;
 
 const credentials = require('./utils').credentials;
 
-describe('User logout test', () => {
+describe('Logout user test', () => {
     let agent;
     beforeEach(() => {
         agent = chai.request.agent(app);
@@ -19,7 +19,7 @@ describe('User logout test', () => {
     afterEach(() => {
         agent.close();
     })
-    it('should successfully logout with test user account details', () => {
+    it('should successfully obtain currently logged in user\'s details', () => {
         return agent.post('/graphql')
             .send({
                 query: `mutation { login(email:"${credentials.user.email}" password: "${credentials.user.password}"){ first_name }}`
@@ -28,11 +28,13 @@ describe('User logout test', () => {
                 expect(res.body.errors).to.be.undefined;
                 return agent.post('/graphql')
                     .send({
-                        query: `mutation { logout }`
+                        query: `{ me { first_name last_name email}}`
                     })
                     .then((res) => {
                         expect(res.body.errors).to.be.undefined;
-                        expect(res.body.data.logout).to.be.true;
+                        expect(res.body.data.me.first_name).to.be.equal(credentials.user.first_name);
+                        expect(res.body.data.me.last_name).to.be.equal(credentials.user.last_name);
+                        expect(res.body.data.me.email).to.be.equal(credentials.user.email);
                     })
                     .catch((err) => {
                         throw err
