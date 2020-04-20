@@ -16,8 +16,8 @@ function App() {
       <div className="App">
         <header className="App-header">
           <LoginBox/>
-          <img src={logo} className="App-logo" alt="logo" />
-          <a
+          Charity Link Project (initial)
+	  <a
             className="App-link"
             href="https://www.highpolarbear.com"
             target="_blank"
