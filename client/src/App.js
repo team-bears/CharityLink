@@ -15,8 +15,9 @@ function App() {
     <ApolloProvider client = {client}>
       <div className="App">
         <header className="App-header">
-          <LoginBox/>
+	
           Charity Link Project (initial)
+
 	  <a
             className="App-link"
             href="https://www.highpolarbear.com"
@@ -25,6 +26,7 @@ function App() {
           >
           High Polar Bear 
           </a>
+	<LoginBox/>
         </header>
       </div>
     </ApolloProvider>
