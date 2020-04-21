@@ -6,27 +6,28 @@ BROMROS ?
 
 ## CLASS / TYPES
 
-USR ->
-UC (User Charity)
-UA (User Account)
-
-DMY (Date / Month / Year)
-STR (String)
-ID (String ? => Autogen by MongoDB)
-TRNS (Transactions)
-PIC (Pictures)
-
-POST (a post in a feed)
--> Pictures
--> Plain Text
--> Videos (LATER)
--> Likes
--> Comments
--> Shares
--> Timestamp
--> Creator
-
-FD (FEED) -> POST(s)
+| Type | Subtype           | Description                      |
+| ---- | ----------------- | -------------------------------- |
+| USR  | UC (User Charity) |                                  |
+| USR  | UA (User Account) |                                  |
+|      |                   |                                  |
+| DMY  |                   | (Date / Month / Year)            |
+| STR  |                   | (String)                         |
+| ID   |                   | (String ? => Autogen by MongoDB) |
+| TRNS |                   | (Transactions)                   |
+| PIC  |                   | (Pictures)                       |
+|      |                   |                                  |
+| POST |                   | (a post in a feed)               |
+| POST | Pictures          |                                  |
+| POST | Plain Text        |                                  |
+| POST | Videos            | (LATER)                          |
+| POST | Likes             |                                  |
+| POST | Comments          |                                  |
+| POST | Shares            |                                  |
+| POST | TimeStamp         |                                  |
+| POST | Creator           |                                  |
+|      |                   |                                  |
+| FD   | POST              | (FEED)  -> POST(s)               |
 
 
 
