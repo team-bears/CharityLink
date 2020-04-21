@@ -46,7 +46,7 @@
 
 
 
-## Charity Account (Super -> User)
+### Charity Account (Super -> User)
 
 | N   | TYPE | SUBTYPE | NAME                               |
 | --- | ---- | ------- | ---------------------------------- |
@@ -68,7 +68,7 @@
 
 
 
-## User Account (Super -> User)
+### User Account (Super -> User)
 
 | N   | TYPE | SUBTYPE | NAME                               |
 | --- | ---- | ------- | ---------------------------------- |
