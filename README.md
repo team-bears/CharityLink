@@ -1,9 +1,3 @@
-## Rename Project.
-
-BROMROS ?
-
-
-
 ## CLASS / TYPES
 
 | Type | Subtype           | Description                      |
