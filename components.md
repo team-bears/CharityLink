@@ -16,3 +16,5 @@
  - DOB
  - Profile Picture Upload
  - Profile Brief
+ - Sign Up Button
+ - Confirmation of signup.
