@@ -5,7 +5,7 @@
 - Login Button
 - Forgot PW Button (Less of a priority for now)
 
-## Sign up Components
+## Sign up Components
 
  (To Discuss)
 
