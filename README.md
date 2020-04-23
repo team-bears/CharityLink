@@ -6,6 +6,7 @@ BROMROS ?
 
 | Type | Subtype              | Description                      |
 | ---- | -------------------- | -------------------------------- |
+| ACC  |                      | Account                          |
 | ACC  | UC (Account Charity) |                                  |
 | ACC  | UA (Account User)    |                                  |
 |      |                      |                                  |
@@ -76,4 +77,3 @@ BROMROS ?
 |     | L[]  | FD      | Feed contains posts ...            |
 |     | STR  | Email   | Email.                             |
 |     | L[]  | POST(s) | List of posts made by this account |
-
