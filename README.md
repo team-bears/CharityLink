@@ -33,15 +33,14 @@ BROMROS ?
 | N   | TYPE | SUBTYPE | NAME                               |
 | --- | ---- | ------- | ---------------------------------- |
 | 0.  | ID   |         | (AUTOGEN)                          |
-| 1.  | STR  |         | Name                               |
-| 2.  | DMY  |         | Creation Date                      |
-| 3.  | L[]  | ACC     | Followers List                     |
-| 4.  | L[]  | ACC     | Follows List                       |
-| 5.  | L[]  | TRSN ID | Transacts                          |
-| 6.  | PIC  | PROFILE | Profile Picture                    |
-| 7.  | L[]  | FD      | Feed contains posts ...            |
-| 8.  | STR  | Email   | Email.                             |
-| 9.  | L[]  | POST(s) | List of posts made by this account |
+| 1.  | DMY  |         | Creation Date                      |
+| 2.  | L[]  | ACC     | Followers List                     |
+| 3.  | L[]  | ACC     | Follows List                       |
+| 4.  | L[]  | TRSN ID | Transacts                          |
+| 5.  | PIC  | PROFILE | Profile Picture                    |
+| 6.  | L[]  | FD      | Feed contains posts ...            |
+| 7.  | STR  | Email   | Email.                             |
+| 8.  | L[]  | POST(s) | List of posts made by this account |
 
 ## Charity Account (Super -> Account)
 
@@ -49,8 +48,8 @@ BROMROS ?
 | --- | ---- | ------- | ---------------------------------- |
 | 1.  | L[]  | UA      | Managers                           |
 | 2.  | STR  | PHONE   | Phone Number                       |
+| 3.  | STR  |         | Charity Name                       |
 |     | ID   |         | (AUTOGEN)                          |
-|     | STR  |         | Name                               |
 |     | DMY  |         | Creation Date                      |
 |     | L[]  | ACC     | Followers List                     |
 |     | L[]  | ACC     | Follows List                       |
