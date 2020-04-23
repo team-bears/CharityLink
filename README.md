@@ -35,8 +35,8 @@ BROMROS ?
 | 0.  | ID   |         | (AUTOGEN)                          |
 | 1.  | STR  |         | Name                               |
 | 2.  | DMY  |         | Creation Date                      |
-| 3.  | L[]  | USR     | Followers List                     |
-| 4.  | L[]  | USR     | Follows List                       |
+| 3.  | L[]  | ACC     | Followers List                     |
+| 4.  | L[]  | ACC     | Follows List                       |
 | 5.  | L[]  | TRSN ID | Transacts                          |
 | 6.  | PIC  | PROFILE | Profile Picture                    |
 | 7.  | L[]  | FD      | Feed contains posts ...            |
@@ -52,8 +52,8 @@ BROMROS ?
 |     | ID   |         | (AUTOGEN)                          |
 |     | STR  |         | Name                               |
 |     | DMY  |         | Creation Date                      |
-|     | L[]  | USR     | Followers List                     |
-|     | L[]  | USR     | Follows List                       |
+|     | L[]  | ACC     | Followers List                     |
+|     | L[]  | ACC     | Follows List                       |
 |     | L[]  | TRSN ID | Transacts                          |
 |     | PIC  | PROFILE | Profile Picture                    |
 |     | L[]  | FD      | Feed contains posts ...            |
@@ -69,8 +69,8 @@ BROMROS ?
 |     | ID   |         | (AUTOGEN)                          |
 |     | STR  |         | Name                               |
 |     | DMY  |         | Creation Date                      |
-|     | L[]  | USR     | Followers List                     |
-|     | L[]  | USR     | Follows List                       |
+|     | L[]  | ACC     | Followers List                     |
+|     | L[]  | ACC     | Follows List                       |
 |     | L[]  | TRSN ID | Transacts                          |
 |     | PIC  | PROFILE | Profile Picture                    |
 |     | L[]  | FD      | Feed contains posts ...            |
