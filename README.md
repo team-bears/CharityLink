@@ -66,8 +66,9 @@ BROMROS ?
 | --- | ---- | ------- | ---------------------------------- |
 | 1.  | STR  | GENDER  | (Can be null)                      |
 | 2.  | DMY  | DOB     | Date of Birth                      |
+| 3.  | STR  | FNAME   | First Name                         |
+| 4.  | STR  | LNAME   | Last Name                          |
 |     | ID   |         | (AUTOGEN)                          |
-|     | STR  |         | Name                               |
 |     | DMY  |         | Creation Date                      |
 |     | L[]  | ACC     | Followers List                     |
 |     | L[]  | ACC     | Follows List                       |
