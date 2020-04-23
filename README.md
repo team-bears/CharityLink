@@ -48,8 +48,7 @@ BROMROS ?
 | N   | TYPE | SUBTYPE | NAME                               |
 | --- | ---- | ------- | ---------------------------------- |
 | 1.  | L[]  | UA      | Managers                           |
-| 2.  | UC   | OWNER   | Charity Account Owner Itself       |
-| 3.  | STR  | PHONE   | Phone Number                       |
+| 2.  | STR  | PHONE   | Phone Number                       |
 |     | ID   |         | (AUTOGEN)                          |
 |     | STR  |         | Name                               |
 |     | DMY  |         | Creation Date                      |
