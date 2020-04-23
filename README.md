@@ -41,6 +41,7 @@ BROMROS ?
 | 6.  | L[]  | FD      | Feed contains posts ...            |
 | 7.  | STR  | Email   | Email.                             |
 | 8.  | L[]  | POST(s) | List of posts made by this account |
+| 9.  | STR  |         | Name                               |
 
 ## Charity Account (Super -> Account)
 
@@ -48,7 +49,7 @@ BROMROS ?
 | --- | ---- | ------- | ---------------------------------- |
 | 1.  | L[]  | UA      | Managers                           |
 | 2.  | STR  | PHONE   | Phone Number                       |
-| 3.  | STR  |         | Charity Name                       |
+|     | STR  |         | Charity Name                       |
 |     | ID   |         | (AUTOGEN)                          |
 |     | DMY  |         | Creation Date                      |
 |     | L[]  | ACC     | Followers List                     |
