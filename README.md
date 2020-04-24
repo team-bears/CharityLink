@@ -32,7 +32,7 @@ BROMROS ?
 
 | N   | TYPE | SUBTYPE | NAME                               |
 | --- | ---- | ------- | ---------------------------------- |
-| 0.  | ID   |         | (AUTOGEN)                          |
+| 0.  | UID  |         | Username                           |
 | 1.  | DMY  |         | Creation Date                      |
 | 2.  | L[]  | ACC     | Followers List                     |
 | 3.  | L[]  | ACC     | Follows List                       |
@@ -50,7 +50,7 @@ BROMROS ?
 | 1.  | L[]  | UA      | Managers                           |
 | 2.  | STR  | PHONE   | Phone Number                       |
 |     | STR  |         | Charity Name                       |
-|     | ID   |         | (AUTOGEN)                          |
+|     | UID  |         | CharityUsername                    |
 |     | DMY  |         | Creation Date                      |
 |     | L[]  | ACC     | Followers List                     |
 |     | L[]  | ACC     | Follows List                       |
@@ -68,7 +68,7 @@ BROMROS ?
 | 2.  | DMY  | DOB     | Date of Birth                      |
 | 3.  | STR  | FNAME   | First Name                         |
 | 4.  | STR  | LNAME   | Last Name                          |
-|     | ID   |         | (AUTOGEN)                          |
+|     | UID  |         | Username                           |
 |     | DMY  |         | Creation Date                      |
 |     | L[]  | ACC     | Followers List                     |
 |     | L[]  | ACC     | Follows List                       |
