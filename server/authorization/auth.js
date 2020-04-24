@@ -1,20 +1,26 @@
+const bcrypt = require('bcrypt');
 const passport = require('passport');
 const GraphQLLocalStrategy = require('graphql-passport').GraphQLLocalStrategy;
 
 const User = require('../models/user');
+const Charity = require('../models/charity');
 
-passport.use(new GraphQLLocalStrategy(async (email, password, done) => {
-    // Adjust this callback to your needs
-    const matchingUsers = await User.find({
-        email: email
-    });
-    if (matchingUsers.length == 1) {
-        if (matchingUsers[0].password == password) {
-            done(null, matchingUsers[0]);
+const {
+    findAccount
+} = require('./utils');
+
+
+passport.use(new GraphQLLocalStrategy(async (identifier, password, done) => {
+
+    // First we'll try to see if there's a user
+    const account = await findAccount(identifier);
+    if (account) {
+        if (account.password == password) {
+            done(null, account);
         } else {
-            done(new Error("Wrong password", null));
+            done(new Error("You've entered the wrong password"), null);
         }
     } else {
-        done(new Error("no matching user"), null);
+        done(new Error("Account doesn't exist. Why not sign up for one?"), null);
     }
 }));

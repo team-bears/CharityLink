@@ -5,6 +5,11 @@ const {
     GraphQLString
 } = require("graphql");
 
+const {
+    validateEmail,
+    validatePassword
+} = require('./../../authorization/utils');
+
 const Charity = require('./../../models/charity');
 
 const {
@@ -12,41 +17,46 @@ const {
 } = require('./../types');
 
 const CharityMutations = {
-    // createCharity: {
-    //     type: CharityType,
-    //     args: {
-    //         name: {
-    //             type: new GraphQLNonNull(GraphQLString)
-    //         },
-    //         description: {
-    //             type: new GraphQLNonNull(GraphQLString)
-    //         },
-    //         ownerId: {
-    //             type: new GraphQLNonNull(GraphQLID)
-    //         },
-    //     },
-    //     resolve: async (_source, args, context) => {
-    //         let charity = new Charity({
-    //             name: args.name,
-    //             description: args.description,
-    //             ownerId: args.ownerId
-    //         });
-    //         charity.save();
-    //         return charity;
-    //     }
-    // },
-    // deleteCharity: {
-    //     type: GraphQLBoolean,
-    //     args: {
-    //         id: {
-    //             type: new GraphQLNonNull(GraphQLID)
-    //         }
-    //     },
-    //     resolve: (_source, args, context) => {
-    //         let charity = Charity.findById(args.id);
-    //         charity.remove();
-    //     }
-    // }
+    signupCharity: {
+        type: CharityType,
+        args: {
+            uid: {
+                type: new GraphQLNonNull(GraphQLString)
+            },
+            name: {
+                type: new GraphQLNonNull(GraphQLString)
+            },
+            profile_picture: {
+                type: new GraphQLNonNull(GraphQLString)
+            },
+            email: {
+                type: new GraphQLNonNull(GraphQLString)
+            },
+            phone: {
+                type: new GraphQLNonNull(GraphQLString)
+            },
+            password: {
+                type: new GraphQLNonNull(GraphQLString)
+            },
+            confirm_password: {
+                type: new GraphQLNonNull(GraphQLString)
+            }
+        },
+        resolve: async (parent, args, context) => {
+            // Validation
+
+            await validateEmail(args.email);
+
+            validatePassword(args.password, args.confirm_password);
+
+            // TODO: hash password
+
+            let charity = new Charity(args);
+            const res = await charity.save();
+
+            return res;
+        }
+    }
 };
 
 module.exports = CharityMutations;
