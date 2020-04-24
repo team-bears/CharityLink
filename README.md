@@ -12,7 +12,7 @@ BROMROS ?
 |      |                      |                                  |
 | DMY  |                      | (Date / Month / Year)            |
 | STR  |                      | (String)                         |
-| ID   |                      | (String ? => Autogen by MongoDB) |
+| UID  |                      | Username (chosen by user/charity)|
 | TRNS |                      | (Transactions)                   |
 | PIC  |                      | (Pictures)                       |
 |      |                      |                                  |
