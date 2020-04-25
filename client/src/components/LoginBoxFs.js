@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { graphql } from "react-apollo";
 import { flowRight as compose } from "lodash";
 import { loginMutation } from "../gql/mutations";
-import "../LoginBox.css";
+import "../css/LoginBox.css";
 
 class LoginBoxFs extends Component {
   constructor(props) {

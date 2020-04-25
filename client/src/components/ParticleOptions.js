@@ -1,35 +1,5 @@
-import React from "react";
-import ApolloClient from "apollo-boost";
-import { ApolloProvider } from "react-apollo";
-import logo from "./logo.svg";
-import Particles from "react-particles-js";
-import "./css/App.css";
-
-import LoginBoxFs from "./components/LoginBoxFs";
-
-const client = new ApolloClient({
-  uri: "http://localhost:3000/graphql"
-});
-
-function App() {
-  const particlesOptions = {
-    // particles: {
-    //   number: {
-    //     value: 10,
-    //     density: {
-    //       enable: true,
-    //       value_area: 150
-    //     }
-    //   },
-    //   line_linked: {
-    //     shadow: {
-    //       enable: true,
-    //       color: "#3CA9D1",
-    //       blur: 5
-    //     }
-    //   }
-    // }
-
+function ParticleOptions() {
+  return {
     particles: {
       number: {
         value: 123,
@@ -139,17 +109,6 @@ function App() {
     },
     retina_detect: true
   };
-
-  return (
-    <ApolloProvider client={client}>
-      <div className="App">
-        <header className="App-header">
-          <Particles className="particles" params={particlesOptions} />
-          <LoginBoxFs text="Charity Link Project (initial)" />
-        </header>
-      </div>
-    </ApolloProvider>
-  );
 }
 
 //for adding extra bg image
@@ -159,4 +118,4 @@ function App() {
 //  backgroundImage: `url(${logo})`
 //}}
 
-export default App;
+export default ParticleOptions;
