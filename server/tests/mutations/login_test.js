@@ -2,16 +2,16 @@ require('dotenv').config({
     path: '.env.test'
 });
 
-const app = require('../app');
+const app = require('../../app');
 const chai = require('chai');
 const chaiHttp = require('chai-http');
 
 chai.use(chaiHttp);
 const expect = chai.expect;
 
-const credentials = require('./utils').credentials;
+const credentials = require('./../utils').credentials;
 
-describe('User login test', () => {
+describe.skip('Tests for logging in', () => {
     it('should successfully login with test user account details', () => {
         return chai.request(app)
             .post('/graphql')

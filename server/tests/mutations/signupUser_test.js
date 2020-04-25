@@ -2,7 +2,7 @@ require('dotenv').config({
     path: '.env.test'
 });
 
-const app = require('../app');
+const app = require('../../app');
 const chai = require('chai');
 const chaiHttp = require('chai-http');
 const Fakerator = require('fakerator');
@@ -12,7 +12,7 @@ chai.use(chaiHttp);
 const expect = chai.expect;
 
 // to be skipped for now
-describe('User signup test', () => {
+describe.skip('Tests for signing up for a user account', () => {
     it('should successfully sign up with a new account details', () => {
         const test = {
             first_name: fakerator.names.firstName(),

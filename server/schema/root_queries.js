@@ -26,13 +26,6 @@ const RootQuery = new GraphQLObjectType({
                 const account = context.getUser();
                 return account;
             }
-        },
-        charities: {
-            type: new GraphQLList(CharityType),
-            resolve(parent, args, context) {
-                const allcharities = Charity.find({});
-                return allcharities;
-            }
         }
     }
 });
