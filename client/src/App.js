@@ -5,7 +5,7 @@ import logo from "./logo.svg";
 import Particles from "react-particles-js";
 import "./App.css";
 
-import LoginBox from "./components/LoginBox";
+import LoginBoxFs from "./components/LoginBoxFs";
 
 const client = new ApolloClient({
   uri: "http://localhost:3000/graphql"
@@ -145,16 +145,7 @@ function App() {
       <div className="App">
         <header className="App-header">
           <Particles className="particles" params={particlesOptions} />
-          Charity Link Project (initial)
-          <a
-            className="App-link"
-            href="https://www.highpolarbear.com"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            High Polar Bear
-          </a>
-          <LoginBox />
+          <LoginBoxFs text="Charity Link Project (initial)" />
         </header>
       </div>
     </ApolloProvider>
