@@ -4,6 +4,7 @@ import { ApolloProvider } from "react-apollo";
 import logo from "./logo.svg";
 import Particles from "react-particles-js";
 import "./css/App.css";
+import * as serviceWorker from "./serviceWorker";
 
 import LoginBoxFs from "./components/LoginBoxFs";
 
@@ -13,23 +14,6 @@ const client = new ApolloClient({
 
 function App() {
   const particlesOptions = {
-    // particles: {
-    //   number: {
-    //     value: 10,
-    //     density: {
-    //       enable: true,
-    //       value_area: 150
-    //     }
-    //   },
-    //   line_linked: {
-    //     shadow: {
-    //       enable: true,
-    //       color: "#3CA9D1",
-    //       blur: 5
-    //     }
-    //   }
-    // }
-
     particles: {
       number: {
         value: 123,
@@ -145,18 +129,16 @@ function App() {
       <div className="App">
         <header className="App-header">
           <Particles className="particles" params={particlesOptions} />
-          <LoginBoxFs text="Charity Link Project (initial)" />
+          <LoginBoxFs text="Charity Link Project Admin Panel" />
         </header>
       </div>
     </ApolloProvider>
   );
 }
 
-//for adding extra bg image
-// add the following to the Particles <>
-//
-//style={{
-//  backgroundImage: `url(${logo})`
-//}}
-
-export default App;
+ReactDOM.render(
+  <React.StrictMode>
+    <IndexApp />
+  </React.StrictMode>,
+  document.getElementById("root")
+);

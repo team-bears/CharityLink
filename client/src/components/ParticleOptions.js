@@ -118,4 +118,22 @@ function ParticleOptions() {
 //  backgroundImage: `url(${logo})`
 //}}
 
+//past settings
+// particles: {
+//   number: {
+//     value: 10,
+//     density: {
+//       enable: true,
+//       value_area: 150
+//     }
+//   },
+//   line_linked: {
+//     shadow: {
+//       enable: true,
+//       color: "#3CA9D1",
+//       blur: 5
+//     }
+//   }
+// }
+
 export default ParticleOptions;
