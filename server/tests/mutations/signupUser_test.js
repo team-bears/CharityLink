@@ -12,7 +12,7 @@ chai.use(chaiHttp);
 const expect = chai.expect;
 
 // to be skipped for now
-describe.skip('Tests for signing up for a user account', () => {
+describe.skip('Tests for "signupUser" mutation', () => {
     it('should successfully sign up with a new account details', () => {
         const test = {
             first_name: fakerator.names.firstName(),

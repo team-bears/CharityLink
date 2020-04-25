@@ -10,7 +10,7 @@ const expect = chai.expect;
 
 const credentials = require('./../utils').credentials;
 
-describe.skip('Tests for logging out', () => {
+describe.skip('Tests for "logout" mutation', () => {
     let agent;
     beforeEach(() => {
         agent = chai.request.agent(app);

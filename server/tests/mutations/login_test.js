@@ -11,7 +11,7 @@ const expect = chai.expect;
 
 const credentials = require('./../utils').credentials;
 
-describe.skip('Tests for logging in', () => {
+describe.skip('Tests for "login" mutation', () => {
     it('should successfully login with test user account details', () => {
         return chai.request(app)
             .post('/graphql')

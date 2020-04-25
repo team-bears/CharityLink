@@ -10,4 +10,4 @@ const expect = chai.expect;
 
 const credentials = require('./../utils').credentials;
 
-describe.skip('Tests for deleting an account', () => {});
+describe.skip('Tests for "deleteMe" mutation', () => {});
