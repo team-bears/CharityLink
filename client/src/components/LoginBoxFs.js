@@ -14,6 +14,9 @@ import "../css/LoginBox.css";
 // Components
 // import "..."
 
+/**
+ * Main login box component. Username & Password
+ */
 class LoginBoxFs extends Component {
   constructor(props) {
     super(props);
@@ -53,7 +56,6 @@ class LoginBoxFs extends Component {
     }
   }
 
-  // <h2>Login</h2>
   render() {
     return (
       <form
