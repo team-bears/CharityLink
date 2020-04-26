@@ -1,8 +1,8 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
-import IndexApp from "./IndexApp";
-import AdminPanel from "./Admin";
+import IndexApp from "./pages/IndexApp";
+import AdminPanel from "./pages/Admin";
 
 export default function Routes() {
   return (
@@ -29,9 +29,7 @@ export default function Routes() {
           you have multiple routes, but you want only one
           of them to render at a time
         */
-}
-
-/* EXAMPLE MENU LINKS
+  /* EXAMPLE MENU LINKS
         <ul>
           <li>
             <Link to="/">Home</Link>
@@ -47,3 +45,4 @@ export default function Routes() {
         <hr />
 
 */
+}

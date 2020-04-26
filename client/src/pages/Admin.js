@@ -4,10 +4,10 @@ import { ApolloProvider } from "react-apollo";
 import logo from "./logo.svg";
 import Particles from "react-particles-js";
 import "./css/App.css";
-import * as serviceWorker from "./serviceWorker";
+import * as serviceWorker from "../serviceWorker";
 
-import LoginBoxFs from "./components/LoginBoxFs";
-import ParticleOptions from "./components/ParticleOptions";
+import LoginBoxFs from "../components/LoginBoxFs";
+import ParticleOptions from "../components/ParticleOptions";
 
 const client = new ApolloClient({
   uri: "http://localhost:3000/graphql"

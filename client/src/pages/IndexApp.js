@@ -5,8 +5,8 @@ import logo from "./logo.svg";
 import Particles from "react-particles-js";
 import "./css/App.css";
 
-import LoginBoxFs from "./components/LoginBoxFs";
-import ParticleOptions from "./components/ParticleOptions";
+import LoginBoxFs from "../components/LoginBoxFs";
+import ParticleOptions from "../components/ParticleOptions";
 
 const client = new ApolloClient({
   uri: "http://localhost:3000/graphql"

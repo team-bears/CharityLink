@@ -1,7 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./css/index.css";
-import IndexApp from "./IndexApp";
 import * as serviceWorker from "./serviceWorker";
 import Routes from "./routes";
 
