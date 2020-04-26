@@ -1,8 +1,18 @@
+// React
 import React, { Component } from "react";
-import { graphql } from "react-apollo";
+
+// Lodash (Sorting Quickly)
 import { flowRight as compose } from "lodash";
+
+// GQL Mutations
+import { graphql } from "react-apollo";
 import { loginMutation } from "../gql/mutations";
+
+// CSS
 import "../css/LoginBox.css";
+
+// Components
+// import "..."
 
 class LoginBoxFs extends Component {
   constructor(props) {

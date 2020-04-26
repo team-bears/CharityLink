@@ -1,9 +1,18 @@
+// React
 import React from "react";
 import ReactDOM from "react-dom";
-import "./css/index.css";
 import * as serviceWorker from "./serviceWorker";
+
+// CSS for default
+import "./css/index.css";
+
+// Main Routing file.
 import Routes from "./routes";
 
+/**
+ * Main JS of application.
+ * Loads the routes to know which component to load
+ */
 ReactDOM.render(
   <React.StrictMode>
     <Routes />

@@ -1,29 +1,34 @@
+// React
 import React from "react";
-import ApolloClient from "apollo-boost";
-import { ApolloProvider } from "react-apollo";
-import logo from "./logo.svg";
-import Particles from "react-particles-js";
-import "./css/App.css";
-import * as serviceWorker from "../serviceWorker";
 
-import LoginBoxFs from "../components/LoginBoxFs";
+// Particles
+import Particles from "react-particles-js";
 import ParticleOptions from "../components/ParticleOptions";
 
-const client = new ApolloClient({
-  uri: "http://localhost:3000/graphql"
-});
+// CSS
+import "../css/App.css";
 
-function AdminPanel() {
-  return (
-    <ApolloProvider client={client}>
+// Components
+import LoginBoxFs from "../components/LoginBoxFs";
+
+/**
+ * Admin Panel Page -> domain.com/admin/
+ */
+class AdminPanel extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    return (
       <div className="App">
         <header className="App-header">
           <Particles className="particles" params={ParticleOptions()} />
           <LoginBoxFs text="Charity Link Project Admin Panel" />
         </header>
       </div>
-    </ApolloProvider>
-  );
+    );
+  }
 }
 
 export default AdminPanel;

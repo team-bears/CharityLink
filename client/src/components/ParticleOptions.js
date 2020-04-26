@@ -1,3 +1,6 @@
+/**
+ * Particle options for the Particles Component Background.
+ */
 function ParticleOptions() {
   return {
     particles: {

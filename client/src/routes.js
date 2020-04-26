@@ -1,23 +1,40 @@
+// React
 import React from "react";
+
+// Router
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
+// Apollo & GraphQL
+import { ApolloProvider } from "react-apollo";
+import { client } from "./gql/client";
+
+// Pages
 import IndexApp from "./pages/IndexApp";
 import AdminPanel from "./pages/Admin";
 
+/**
+ * Routes of the application.
+ *
+ * "/" for Index
+ * "/admin" for Admin Panel
+ */
 export default function Routes() {
   return (
-    <Router>
-      <div>
-        <Switch>
-          <Route exact path="/">
-            <IndexApp />
-          </Route>
-          <Route path="/admin">
-            <AdminPanel />
-          </Route>
-        </Switch>
-      </div>
-    </Router>
+    <ApolloProvider client={client}>
+      <Router>
+        <div>
+          <Switch>
+            <Route exact path="/">
+              <IndexApp />
+            </Route>
+
+            <Route path="/admin">
+              <AdminPanel />
+            </Route>
+          </Switch>
+        </div>
+      </Router>
+    </ApolloProvider>
   );
 }
 
