@@ -10,6 +10,7 @@ const {
 
 const {
     CharityType,
+    AccountType,
     UserType
 } = require('./types');
 
@@ -20,29 +21,12 @@ const RootQuery = new GraphQLObjectType({
     name: 'RootQueryType',
     fields: {
         me: {
-            type: UserType,
+            type: AccountType,
             resolve(parent, args, context) {
-                const user = context.getUser();
-                return user;
+                const account = context.getUser();
+                return account;
             }
-        },
-        // charity: {
-        //     type: CharityType,
-        //     args: {
-        //         id: {
-        //             type: GraphQLID
-        //         }
-        //     },
-        //     resolve(parent, args) {
-        //         return Charity.findById(args.id);
-        //     }
-        // },
-        // charities: {
-        //     type: new GraphQLList(CharityType),
-        //     resolve(parent, args) {
-        //         return Charity.find({});
-        //     }
-        // }
+        }
     }
 });
 

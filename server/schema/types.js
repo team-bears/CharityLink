@@ -4,42 +4,83 @@ const {
     GraphQLID,
     GraphQLInt,
     GraphQLList,
-    GraphQLNonNull
+    GraphQLNonNull,
+    GraphQLInterfaceType,
+    GraphQLInputObjectType
 } = require('graphql');
 
 const User = require('./../models/user');
 
-const CharityType = new GraphQLObjectType({
-    name: 'Charity',
+const AccountType = new GraphQLInterfaceType({
+    name: 'Account',
     fields: () => ({
-        id: {
+        _id: {
             type: GraphQLID
+        },
+        uid: {
+            type: GraphQLString
+        },
+        profile_picture: {
+            type: GraphQLString
         },
         name: {
             type: GraphQLString
         },
-        description: {
+        email: {
             type: GraphQLString
         },
-        owner: {
-            type: UserType,
-            resolve(parent, args) {
-                // return User.findById(parent.ownerId);
-            }
+        followers: {
+            type: GraphQLList(AccountType)
+        },
+        follows: {
+            type: GraphQLList(AccountType)
+        },
+    }),
+    resolveType: (value) => {
+        if (value.dob) {
+            return UserType;
+        } else {
+            return CharityType;
+        }
+    }
+});
+
+const CharityType = new GraphQLObjectType({
+    name: 'Charity',
+    interfaces: [AccountType],
+    fields: () => ({
+        _id: {
+            type: GraphQLID
+        },
+        uid: {
+            type: GraphQLString
+        },
+        name: {
+            type: GraphQLString
+        },
+        profile_picture: {
+            type: GraphQLString
+        },
+        email: {
+            type: GraphQLString
+        },
+        phone: {
+            type: GraphQLString
         },
         followers: {
-            type: new GraphQLList(UserType),
-            resolve(parent, args) {
-                // TODO: resolve it
-            }
-        }
+            type: GraphQLList(AccountType)
+        },
+        follows: {
+            type: GraphQLList(AccountType)
+        },
     })
 });
 
 const UserType = new GraphQLObjectType({
     name: 'User',
+    interfaces: [AccountType],
     fields: () => ({
-        id: {
+        _id: {
             type: GraphQLID
         },
         first_name: {
@@ -48,31 +89,39 @@ const UserType = new GraphQLObjectType({
         last_name: {
             type: GraphQLString
         },
-        dob: {
-            type: GraphQLInt
+        uid: {
+            type: GraphQLString
+        },
+        profile_picture: {
+            type: GraphQLString
         },
         email: {
             type: GraphQLString
         },
-        password: {
+        dob: {
             type: GraphQLString
         },
-        owns: {
-            type: new GraphQLList(CharityType),
-            resolve(parent, args) {
-                // TODO: resolve it
-            }
+        gender: {
+            type: GraphQLString
+        },
+        followers: {
+            type: GraphQLList(AccountType)
         },
         follows: {
-            type: new GraphQLList(CharityType),
-            resolve(parent, args) {
-                // TODO: resolve it
+            type: GraphQLList(AccountType)
+        },
+        name: {
+            type: GraphQLString,
+            resolve: (parent) => {
+                return parent.first_name + " " + parent.last_name;
             }
-        }
+        },
+
     })
 });
 
 module.exports = {
+    AccountType,
     CharityType,
     UserType
 }

@@ -1,4 +1,3 @@
-const CJSON = require('flatted');
 const {
     GraphQLNonNull,
     GraphQLString,
@@ -17,7 +16,7 @@ const {
 } = require('./../../authorization/utils');
 
 const UserMutations = {
-    signup: {
+    signupUser: {
         type: UserType,
         args: {
             first_name: {
@@ -26,10 +25,19 @@ const UserMutations = {
             last_name: {
                 type: new GraphQLNonNull(GraphQLString)
             },
-            dob: {
+            uid: {
+                type: new GraphQLNonNull(GraphQLString)
+            },
+            profile_picture: {
                 type: new GraphQLNonNull(GraphQLString)
             },
             email: {
+                type: new GraphQLNonNull(GraphQLString)
+            },
+            dob: {
+                type: new GraphQLNonNull(GraphQLString)
+            },
+            gender: {
                 type: new GraphQLNonNull(GraphQLString)
             },
             password: {
@@ -41,48 +49,18 @@ const UserMutations = {
         },
         resolve: async (parent, args) => {
 
+            // validate email
+
             await validateEmail(args.email);
 
-            validatePassword(args.password);
+            validatePassword(args.password, args.confirm_password);
 
             args.followsIds = [];
             let user = new User(args);
-            user.save();
-            return user;
+            const res = await user.save();
+            return res;
         }
     },
-    login: {
-        type: UserType,
-        args: {
-            email: {
-                type: new GraphQLNonNull(GraphQLString)
-            },
-            password: {
-                type: new GraphQLNonNull(GraphQLString)
-            }
-        },
-        resolve: async (parent, {
-            email,
-            password
-        }, context) => {
-            const {
-                user
-            } = await context.authenticate("graphql-local", {
-                email,
-                password
-            });
-            context.login(user);
-            return user;
-
-        }
-    },
-    logout: {
-        type: GraphQLBoolean,
-        resolve: async (parent, args, context) => {
-            context.logout();
-            return true;
-        }
-    }
-};
+}
 
 module.exports = UserMutations;

@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "nyc mocha tests/*_test.js --exit",
+    "test": "nyc mocha tests/**/*_test.js --exit",
     "start": "nodemon index.js"
   },
   "author": "",
@@ -13,6 +13,7 @@
     "dotenv": "^8.2.0"
   },
   "dependencies": {
+    "bcrypt": "^4.0.1",
     "chai": "^4.2.0",
     "chai-http": "^4.3.0",
     "cors": "^2.8.5",
