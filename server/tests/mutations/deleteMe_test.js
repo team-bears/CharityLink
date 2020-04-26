@@ -3,11 +3,50 @@ require('dotenv').config({
 });
 
 const app = require('../../app');
-const chai = require('chai');
-const chaiHttp = require('chai-http');
-chai.use(chaiHttp);
-const expect = chai.expect;
+const expect = require('chai').expect;
 
-const credentials = require('./../utils').credentials;
+const {
+    TestAccount
+} = require('./../utils');
 
-describe.skip('Tests for "deleteMe" mutation', () => {});
+describe('Tests for "deleteMe" mutation', () => {
+
+    describe('Tests with a charity account', () => {
+        let account;
+        beforeEach(async () => {
+            account = new TestAccount(app);
+            await account.signupCharity();
+            await account.login();
+        });
+        afterEach(async () => {
+            account.closeAgent();
+        });
+
+        it('should successfully delete a charity', async () => {
+            await account.delete((res) => {
+                expect(res.body.errors).to.be.undefined;
+                expect(res.body.data.deleteMe).to.be.true;
+            });
+        });
+    });
+
+    describe('Tests with a user account', () => {
+        let account;
+        beforeEach(async () => {
+            account = new TestAccount(app);
+            await account.signupUser();
+            await account.login();
+        });
+        afterEach(async () => {
+            account.closeAgent();
+        });
+
+        it('should successfully delete a user', async () => {
+            await account.delete((res) => {
+                expect(res.body.errors).to.be.undefined;
+                expect(res.body.data.deleteMe).to.be.true;
+            });
+        });
+    });
+
+});

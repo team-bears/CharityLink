@@ -13,7 +13,7 @@ mongoose.connect(process.env.DB_LINK, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 }).then((succ) => {
-    console.log("Connected to database.")
+    // do nothing
 }).catch((err) => {
     console.error(JSON.stringify(err));
 });

@@ -65,6 +65,7 @@ const AccountMutations = {
                 const res = await Charity.findByIdAndDelete(account._id);
                 return true;
             }
+
             if (account.__typename == "User") {
                 const res = await User.findByIdAndDelete(account._id);
                 return true;
