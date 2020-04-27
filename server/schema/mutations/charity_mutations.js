@@ -8,7 +8,7 @@ const {
 const {
     validateEmail,
     validatePassword
-} = require('./../../authorization/utils');
+} = require('./../../authentication/utils');
 
 const Charity = require('./../../models/charity');
 

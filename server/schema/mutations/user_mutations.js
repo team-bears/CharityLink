@@ -13,7 +13,7 @@ const {
 const {
     validateEmail,
     validatePassword
-} = require('./../../authorization/utils');
+} = require('../../authentication/utils');
 
 const UserMutations = {
     signupUser: {

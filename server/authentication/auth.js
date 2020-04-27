@@ -5,6 +5,7 @@ const GraphQLLocalStrategy = require('graphql-passport').GraphQLLocalStrategy;
 const User = require('../models/user');
 const Charity = require('../models/charity');
 
+const Errorname = require('./../errors/errors').Errorname;
 const {
     findAccount
 } = require('./utils');
@@ -18,9 +19,9 @@ passport.use(new GraphQLLocalStrategy(async (identifier, password, done) => {
         if (account.password == password) {
             done(null, account);
         } else {
-            done(new Error("You've entered the wrong password"), null);
+            done(new Error(Errorname.AUTHENTICATION_INCORRECT_PASSWORD), null);
         }
     } else {
-        done(new Error("Account doesn't exist. Why not sign up for one?"), null);
+        done(new Error(Errorname.AUTHENTICATION_INCORRECT_IDENTIFIER), null);
     }
 }));

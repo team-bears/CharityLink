@@ -7,6 +7,8 @@ const {
 const User = require('./../../models/user');
 const Charity = require('./../../models/charity');
 
+const Errorname = require('./../../errors/errors').Errorname;
+
 const {
     AccountType,
     CharityType,
@@ -54,8 +56,9 @@ const AccountMutations = {
     deleteMe: {
         type: GraphQLBoolean,
         resolve: async (parent, args, context) => {
+
             if (context.isUnauthenticated()) {
-                throw new Error("Invalid operation: Can't delete if logged in");
+                throw new Error(Errorname.AUTHORIZATION_DELETE_ACCOUNT);
             }
 
             const account = context.getUser();
