@@ -1,4 +1,4 @@
-const Errorname = {
+const Errortype = {
     AUTHENTICATION_INCORRECT_PASSWORD: 'AUTHENTICATION_INCORRECT_PASSWORD',
     AUTHENTICATION_INCORRECT_IDENTIFIER: 'AUTHENTICATION_INCORRECT_IDENTIFIER',
     INPUT_INVALID_EMAIL_FORMAT: 'INPUT_INVALID_EMAIL_FORMAT',
@@ -45,6 +45,6 @@ const Errortypes = {
 }
 
 module.exports = {
-    Errorname,
+    Errortype,
     Errortypes
 }

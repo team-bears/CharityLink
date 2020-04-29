@@ -7,7 +7,7 @@ const {
 const User = require('./../../models/user');
 const Charity = require('./../../models/charity');
 
-const Errorname = require('./../../errors/errors').Errorname;
+const Errortype = require('./../../errors/errors').Errortype;
 
 const {
     AccountType,
@@ -58,7 +58,7 @@ const AccountMutations = {
         resolve: async (parent, args, context) => {
 
             if (context.isUnauthenticated()) {
-                throw new Error(Errorname.AUTHORIZATION_DELETE_ACCOUNT);
+                throw new Error(Errortype.AUTHORIZATION_DELETE_ACCOUNT);
             }
 
             const account = context.getUser();
