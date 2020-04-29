@@ -58,7 +58,7 @@ const AccountMutations = {
         resolve: async (parent, args, context) => {
 
             if (context.isUnauthenticated()) {
-                throw new Error(Errortype.AUTHORIZATION_DELETE_ACCOUNT);
+                throw new Error(Errortype.AUTHENTICATION_DELETE_ACCOUNT);
             }
 
             const account = context.getUser();
@@ -66,13 +66,17 @@ const AccountMutations = {
 
             if (account.__typename == "Charity") {
                 const res = await Charity.findByIdAndDelete(account._id);
-                return true;
-            }
 
+            }
             if (account.__typename == "User") {
                 const res = await User.findByIdAndDelete(account._id);
-                return true;
             }
+
+            // note: normally i'd use an if-elseif-else here
+            // but it's impossible for an else to happen
+            // and it affects my branch coverage % when running tests
+
+            return true;
         }
     }
 };

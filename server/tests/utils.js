@@ -52,6 +52,7 @@ class TestAccount {
             password: options.password || (fakerator.internet.password(8) + "Ab123!"),
             __typename: "Charity"
         }
+        this.info.confirm_password = options.confirm_password || this.info.password;
 
         const query = `mutation{
             signupCharity(
@@ -61,7 +62,7 @@ class TestAccount {
               email: "${this.info.email}"
               phone: "${this.info.phone}"
               password: "${this.info.password}"
-              confirm_password: "${this.info.password}"
+              confirm_password: "${this.info.confirm_password}"
             ){
               _id
               email
@@ -81,6 +82,8 @@ class TestAccount {
             password: options.password || (fakerator.internet.password(8) + "Ab123!"),
             __typename: "User"
         }
+        this.info.confirm_password = options.confirm_password || this.info.password;
+
         const query = `mutation{
             signupUser(
               first_name: "${this.info.first_name}"
@@ -89,7 +92,7 @@ class TestAccount {
               profile_picture: "${this.info.profile_picture}"
               email: "${this.info.email}"
               password: "${this.info.password}"
-              confirm_password: "${this.info.password}"
+              confirm_password: "${this.info.confirm_password}"
               dob: "${this.info.dob}"
               gender: "${this.info.gender}"
             ){

@@ -15,10 +15,6 @@ const mongoose = require('mongoose');
 mongoose.connect(process.env.DB_LINK, {
     useNewUrlParser: true,
     useUnifiedTopology: true
-}).then((succ) => {
-    // do nothing
-}).catch((err) => {
-    console.error(JSON.stringify(err));
 });
 
 const app = express();
@@ -48,12 +44,12 @@ app.use('/graphql', graphqlHTTP((req, res, User) => ({
     }),
     customFormatErrorFn(err) {
         const custom_error = Errortypes[err.message];
-        if (custom_error)
+        if (custom_error) {
             return ({
                 message: custom_error.message,
                 type: err.message
             });
-        else
+        } else
             return err;
     }
 })));

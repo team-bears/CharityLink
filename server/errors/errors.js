@@ -4,25 +4,25 @@ const Errortype = {
     INPUT_INVALID_EMAIL_FORMAT: 'INPUT_INVALID_EMAIL_FORMAT',
     INPUT_EMAIL_TAKEN: 'INPUT_EMAIL_TAKEN',
     INPUT_PASSWORD_SIZE: 'INPUT_PASSWORD_SIZE',
-    INPUT_PASSWORD_NO_UPPERCASE: 'INPUT_PASSWORD_UPPERCASE',
-    INPUT_PASSWORD_NO_LOWERCASE: 'INPUT_PASSWORD_LOWERCASE',
-    INPUT_PASSWORD_NO_DIGIT: 'INPUT_PASSWORD_DIGIT',
+    INPUT_PASSWORD_NO_UPPERCASE: 'INPUT_PASSWORD_NO_UPPERCASE',
+    INPUT_PASSWORD_NO_LOWERCASE: 'INPUT_PASSWORD_NO_LOWERCASE',
+    INPUT_PASSWORD_NO_DIGIT: 'INPUT_PASSWORD_NO_DIGIT',
     INPUT_PASSWORD_VERIFY_FAILED: 'INPUT_PASSWORD_VERIFY_FAILED',
-    AUTHORIZATION_DELETE_ACCOUNT: 'AUTHORIZATION_DELETE_ACCOUNT',
+    AUTHENTICATION_DELETE_ACCOUNT: 'AUTHENTICATION_DELETE_ACCOUNT',
 }
 
 const Errortypes = {
     AUTHENTICATION_INCORRECT_PASSWORD: {
-        message: "Looks like you entered the wrong password :/",
+        message: "Incorrect password entered for existent account.",
     },
     AUTHENTICATION_INCORRECT_IDENTIFIER: {
-        message: "Account doesn't exist. Why not sign up for one?",
+        message: "Attempt to login into non-existent account.",
     },
     INPUT_INVALID_EMAIL_FORMAT: {
-        message: "The format of the email isn't right.",
+        message: "The format of the email is of incorrect format.",
     },
     INPUT_EMAIL_TAKEN: {
-        message: "Account already exists with this email.",
+        message: "Account already registered with this email.",
     },
     INPUT_PASSWORD_SIZE: {
         message: "Password must contain 8-30 characters",
@@ -37,10 +37,10 @@ const Errortypes = {
         message: "Password must contain at least one digit.",
     },
     INPUT_PASSWORD_VERIFY_FAILED: {
-        message: "Regular and verify password fields do not match.",
+        message: "Regular and verify password fields aren't equal to each other.",
     },
-    AUTHORIZATION_DELETE_ACCOUNT: {
-        message: "There was attempt to delete your account even though you're not logged in!",
+    AUTHENTICATION_DELETE_ACCOUNT: {
+        message: "Attempt to delete password while logged out.",
     }
 }
 

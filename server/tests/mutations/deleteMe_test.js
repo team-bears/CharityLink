@@ -9,6 +9,8 @@ const {
     TestAccount
 } = require('./../utils');
 
+const Errortype = require('./../../errors/errors').Errortype;
+
 describe('Tests for "deleteMe" mutation', () => {
 
     describe('Tests with a charity account', () => {
@@ -49,4 +51,23 @@ describe('Tests for "deleteMe" mutation', () => {
         });
     });
 
+    describe('Miscellanous tests for deleting an account', () => {
+        let account;
+        beforeEach(async () => {
+            account = new TestAccount(app);
+        });
+        afterEach(async () => {
+            account.closeAgent();
+        });
+
+        it('should give us the correct error upon deleting without logging in', async () => {
+            await account.delete((res) => {
+                const errors = res.body.errors;
+                expect(errors).to.not.be.undefined;
+                expect(errors[0]).to.not.be.undefined;
+                expect(errors[0].type).to.be.equal(Errortype.AUTHENTICATION_DELETE_ACCOUNT);
+            })
+        });
+
+    });
 });
