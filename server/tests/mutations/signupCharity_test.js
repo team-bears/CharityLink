@@ -53,7 +53,7 @@ describe('Tests for "signupCharity" mutation', () => {
     it('signup should fail if the password is too small', async () => {
         await account.signupCharity((res) => {
             expect(res.body.errors).to.not.be.undefined;
-            expect(res.body.errors[0].type).to.be.equal(Errortype.INPUT_PASSWORD_SIZE);
+            expect(res.body.errors[0].type).to.be.equal(Errortype.INPUT_PASSWORD_BAD_SIZE);
         }, {
             password: "Abc1!"
         });
@@ -62,7 +62,7 @@ describe('Tests for "signupCharity" mutation', () => {
     it('signup should fail if the password is too huge', async () => {
         await account.signupCharity((res) => {
             expect(res.body.errors).to.not.be.undefined;
-            expect(res.body.errors[0].type).to.be.equal(Errortype.INPUT_PASSWORD_SIZE);
+            expect(res.body.errors[0].type).to.be.equal(Errortype.INPUT_PASSWORD_BAD_SIZE);
         }, {
             password: "Ab1!".repeat(40)
         });
@@ -71,7 +71,7 @@ describe('Tests for "signupCharity" mutation', () => {
     it('signup should fail if the password is exactly 7 characters', async () => {
         await account.signupCharity((res) => {
             expect(res.body.errors).to.not.be.undefined;
-            expect(res.body.errors[0].type).to.be.equal(Errortype.INPUT_PASSWORD_SIZE);
+            expect(res.body.errors[0].type).to.be.equal(Errortype.INPUT_PASSWORD_BAD_SIZE);
         }, {
             password: "Abc123!"
         });
@@ -80,7 +80,7 @@ describe('Tests for "signupCharity" mutation', () => {
     it('signup should fail if the password is exactly 31 characters', async () => {
         await account.signupCharity((res) => {
             expect(res.body.errors).to.not.be.undefined;
-            expect(res.body.errors[0].type).to.be.equal(Errortype.INPUT_PASSWORD_SIZE);
+            expect(res.body.errors[0].type).to.be.equal(Errortype.INPUT_PASSWORD_BAD_SIZE);
         }, {
             password: "Ab1!" + "a".repeat(28)
         });
@@ -116,7 +116,7 @@ describe('Tests for "signupCharity" mutation', () => {
     it('signup should fail if the password does not match confirm password', async () => {
         await account.signupCharity((res) => {
             expect(res.body.errors).to.not.be.undefined;
-            expect(res.body.errors[0].type).to.be.equal(Errortype.INPUT_PASSWORD_VERIFY_FAILED);
+            expect(res.body.errors[0].type).to.be.equal(Errortype.INPUT_PASSWORD_CONFIRMATION_FAILED);
         }, {
             confirm_password: "Ab123123!"
         });

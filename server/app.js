@@ -5,7 +5,7 @@ const passport = require('passport');
 const schema = require('./schema/schema');
 const buildContext = require('graphql-passport').buildContext;
 
-const Errortypes = require('./errors/errors').Errortypes;
+const ErrorJSON = require('./errors/errors').ErrorJSON;
 
 const cors = require('cors');
 require('./authentication/auth');
@@ -43,7 +43,7 @@ app.use('/graphql', graphqlHTTP((req, res, User) => ({
         User
     }),
     customFormatErrorFn(err) {
-        const custom_error = Errortypes[err.message];
+        const custom_error = ErrorJSON[err.message];
         if (custom_error) {
             return ({
                 message: custom_error.message,

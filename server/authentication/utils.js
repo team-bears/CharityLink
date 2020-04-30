@@ -72,7 +72,7 @@ async function validateEmail(email) {
 
 function validatePassword(password, verify_password) {
     if (!(password.length >= 8 && password.length <= 30)) {
-        throw new Error(Errortype.INPUT_PASSWORD_SIZE);
+        throw new Error(Errortype.INPUT_PASSWORD_BAD_SIZE);
     }
     if (password.match((/[a-z]+/g)) == null) {
         throw new Error(Errortype.INPUT_PASSWORD_NO_LOWERCASE);
@@ -84,7 +84,7 @@ function validatePassword(password, verify_password) {
         throw new Error(Errortype.INPUT_PASSWORD_NO_DIGIT);
     }
     if (password != verify_password) {
-        throw new Error(Errortype.INPUT_PASSWORD_VERIFY_FAILED);
+        throw new Error(Errortype.INPUT_PASSWORD_CONFIRMATION_FAILED);
     }
     return null;
 }
